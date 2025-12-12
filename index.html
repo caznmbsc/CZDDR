@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js" defer></script>
+    <script src="script.js" defer></script>
+    <title>CZDDR Library</title>
+</head>
+<body page-body>
+    <div class="backgroundCover"></div>
+    <template arrow-template>
+        <img src="media/upArrow.png" alt="" class="arrow">
+    </template>
+    <div class="bulletin">
+        <h1>CZ DDR Library</h1>
+        <p>This is every song that is currently on the CZ DDR (Dance Dance Revolution) Machine.</p>
+        <p>Go to the <a href="">Request Sheet</a> to request new songs to be added.</p>
+    </div>
+
+    <input type="search" placeholder="Search Song Name..." class="searchBar" song-search>
+
+    <template song-info-template>
+        <div class="songCard">
+            <div class="songImage"><img src="media/noImage.png" alt="loadingImage" game-image></div>
+            <div class="songName"><p song-name>Song Name</p></div>
+            <div class="songPack" song-pack>Song Pack Name</div>
+            <div class="newStamp hidden" song-stamp></div>
+        </div>
+    </template>  
+</body>
+</html>

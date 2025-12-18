@@ -18,7 +18,16 @@ async function fetchData(url) {
         var rows = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "", raw: false });
         rows = rows.filter(row => row.some(cell => cell !== null && cell !== undefined && cell !== ""));
         rows = rows.slice(1);
-        
+        var dateColumn = rows.map((row) => row[2]); 
+        dateColumn = Array.from(new Set(dateColumn)).map((date) => new Date(date)); 
+        dateColumn.sort((a, b) => b - a);
+        rows.sort((a, b) => {
+            const dateA = new Date(a[2]);
+            const dateB = new Date(b[2]);
+            return dateB - dateA;
+        })
+        console.log(dateColumn.map(date => "'" + date.toLocaleDateString()));
+
         const songCardTemplate = document.querySelector("[song-info-template]");
         const pageBody = document.querySelector("[page-body]");
 
@@ -32,7 +41,7 @@ async function fetchData(url) {
 
                 songName.textContent = row[1];
                 songPack.textContent = row[0];
-                if (row[2] == rows[0][2]) {
+                if (row[2] == dateColumn[0].toLocaleDateString()) {
                     songStamp.classList.toggle("hidden");
                 }
 

@@ -61,6 +61,13 @@ async function fetchData(url) {
                     loadingImage.onload = null;
                 }
 
+                //If this is not effective, move it somewhere else
+                const loadingBlock = document.querySelector("[loadingBlock]");
+                if (loadingBlock != null) {
+                    deleteElement(loadingBlock);
+                }
+                //If this is not effective, move it somewhere else
+
                 pageBody.append(songCard);
                 if (songsDict[row[0]] instanceof Object) {
                     //console.log("DICTIONARY exists");
